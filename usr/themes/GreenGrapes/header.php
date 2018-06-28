@@ -57,16 +57,11 @@
             <li <?php if($this->is('index')): ?> class="active"<?php endif; ?>>
                 <a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
             </li>
-            <li >
-                <a href="https://github.com/tangmaoguo"><?php _e('Git'); ?></a>
-            </li>
+
            <li>
                <a  href="<?php $this->options->feedUrl(); ?>"><?php _e('RSS'); ?></a>
            </li>
-            <li>
-                <a  href="https://github.com/tangmaoguo/build"><?php _e('源码获取'); ?></a>
-            </li>
-           
+
             <?php while($pages->next()): ?>
                 <li <?php if($this->is('page', $pages->slug)): ?> class="active"<?php endif; ?>>
                     <a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
