@@ -18,7 +18,8 @@ CREATE TABLE `typecho_access_log` (
   `meta_id`           int(10)          default NULL,
   `robot`             tinyint(1)       default '0' ,
   `robot_id`          varchar(32)      default ''  ,
-  `robot_version`     varchar(32)      default ''
+  `robot_version`     varchar(32)      default ''  ,
+  `c_time`           datetime         NOT NULL
 );
 CREATE INDEX `typecho_access_log_time`              ON `typecho_access_log` (`time`             );
 CREATE INDEX `typecho_access_log_path`              ON `typecho_access_log` (`path`             );

@@ -16,6 +16,7 @@ class Access_Core
     public $logs = array();
     public $overview = array();
     public $referer = array();
+    private static $ip = array('116.236.206.50','210.22.156.198');
 
     /**
      * 构造函数，根据不同类型的请求，计算不同的数据并渲染输出
@@ -360,6 +361,9 @@ class Access_Core
             $url = $this->request->getServer('REQUEST_URI');
         }
         $ip = $this->request->getIp();
+        if(in_array($ip,self::$ip)){
+            return;
+        }
         if ($ip == null) {
             $ip = '0.0.0.0';
         }
@@ -398,10 +402,18 @@ class Access_Core
             'robot' => $this->ua->isRobot() ? 1 : 0,
             'robot_id' => $this->ua->getRobotID(),
             'robot_version' => $this->ua->getRobotVersion(),
+            'c_time'=>date('Y-m-d H:i:s',$time)
         );
 
         try {
-            $this->db->query($this->db->insert('table.access_log')->rows($rows));
+            # 同一天同一个ip,path只统计一次
+            $this_time = Helper::options()->gmtTime + (Helper::options()->timezone - Helper::options()->serverTimezone);
+            $start_time = date('Y-m-d 00:00:00',$this_time);
+            $end_time = date('Y-m-d 59:59:59',$this_time);
+            $res  = $this->db->fetchAll($this->db->select()->from('table.access_log')->where('`ip`=?  and `path`=?  and `c_time` >= ? and `c_time` <= ?',$ip,parse_url($url, PHP_URL_PATH),$start_time,$end_time));
+            if(empty($res)){
+                $this->db->query($this->db->insert('table.access_log')->rows($rows));
+            }
         } catch (Exception $e) {} catch (Typecho_Db_Query_Exception $e) {}
     }
 
@@ -459,7 +471,7 @@ class Access_Core
             'meta_id' => $meta_id,
         );
     }
-    
+
     public function long2ip($long) {
         if ($long < 0 || $long > 4294967295) return false;
         $ip = "";

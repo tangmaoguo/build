@@ -19,6 +19,7 @@ CREATE TABLE `typecho_access_log` (
   `robot`             tinyint(1)       default '0' ,
   `robot_id`          varchar(32)      default ''  ,
   `robot_version`     varchar(32)      default ''  ,
+  `c_time`           datetime         NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_time`              (`time`             ),
   KEY `idx_path`              (`path`             ),
