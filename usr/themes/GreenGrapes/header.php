@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/prism.css'); ?>">
     <script src="<?php $this->options->themeUrl('js/prism.js'); ?>"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?f8e1b9b1a93c7ce7a3d2ede469025b94";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php if(class_exists('Snow_Plugin') && isset($this->options->plugins['activated']['Snow'])): ?>
         <style>
