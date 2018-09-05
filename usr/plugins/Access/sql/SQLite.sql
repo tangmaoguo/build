@@ -19,7 +19,8 @@ CREATE TABLE `typecho_access_log` (
   `robot`             tinyint(1)       default '0' ,
   `robot_id`          varchar(32)      default ''  ,
   `robot_version`     varchar(32)      default ''  ,
-  `c_time`           datetime         NOT NULL
+  `c_time`           datetime         NOT NULL,
+  `b_ip`             varchar(50)      NOT NULL
 );
 CREATE INDEX `typecho_access_log_time`              ON `typecho_access_log` (`time`             );
 CREATE INDEX `typecho_access_log_path`              ON `typecho_access_log` (`path`             );
@@ -34,4 +35,5 @@ CREATE INDEX `typecho_access_log_entrypoint`        ON `typecho_access_log` (`en
 CREATE INDEX `typecho_access_log_entrypoint_domain` ON `typecho_access_log` (`entrypoint_domain`);
 CREATE INDEX `typecho_access_log_referer`           ON `typecho_access_log` (`referer`          );
 CREATE INDEX `typecho_access_log_referer_domain`    ON `typecho_access_log` (`referer_domain`   );
+CREATE INDEX `typecho_access_log_b_ip`              ON `typecho_access_log` (`b_ip`   );
 COMMIT;

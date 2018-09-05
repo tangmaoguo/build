@@ -20,6 +20,7 @@ CREATE TABLE `typecho_access_log` (
   `robot_id`          varchar(32)      default ''  ,
   `robot_version`     varchar(32)      default ''  ,
   `c_time`           datetime         NOT NULL,
+  `b_ip` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_time`              (`time`             ),
   KEY `idx_path`              (`path`             ),
@@ -33,5 +34,6 @@ CREATE TABLE `typecho_access_log` (
   KEY `idx_entrypoint`        (`entrypoint`       ),
   KEY `idx_entrypoint_domain` (`entrypoint_domain`),
   KEY `idx_referer`           (`referer`          ),
-  KEY `idx_referer_domain`    (`referer_domain`   )
+  KEY `idx_referer_domain`    (`referer_domain`   ),
+  KEY `b_ip`                  (`b_ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=%charset%;

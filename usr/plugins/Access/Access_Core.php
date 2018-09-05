@@ -402,7 +402,8 @@ class Access_Core
             'robot' => $this->ua->isRobot() ? 1 : 0,
             'robot_id' => $this->ua->getRobotID(),
             'robot_version' => $this->ua->getRobotVersion(),
-            'c_time'=>date('Y-m-d H:i:s',$time)
+            'c_time'=>date('Y-m-d H:i:s',$time),
+            'b_ip'=>$this->request->getIp()
         );
 
         try {
