@@ -1,6 +1,6 @@
 
 <aside id="sidebar">
-    
+
 
 
 
@@ -61,13 +61,22 @@
     <aside class="fixsidebar">
         <div class="panel panel-green hidden-xs">
             <div class="panel-heading"><i class="fa fa-tags fa-fw"></i> 标签云</div>
-            <div id="meta-cloud">
-                <canvas height="300" id="mycanvas" style="width: 100%">
-                    <p>标签云</p>
-                    <?php $this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list'); ?>
-                    <?php $this->widget('Widget_Metas_Tag_Cloud')->parse('<a href="{permalink}" class="tag">{name}</a>'); ?>
-                </canvas>
-            </div>
+            <?php Typecho_Widget::widget('Widget_Metas_Category_List')->to($cate); ?>
+            <ul id="cate">
+                <?php if($cate->have()): ?>
+                    <?php while ($cate->next()): ?>
+                        <li> <a style="color:rgb(<?php echo(rand(0,255)); ?>,<?php echo(rand(0,255)); ?>,<?php echo(rand(0,255)); ?>)" href="<?php $cate->permalink();?>"><?php $cate->name(); ?></a> </li>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </ul>
+            <div style="clear:left;"></div>
+<!--            <div id="meta-cloud">-->
+<!--                <canvas height="300" id="mycanvas" style="width: 100%">-->
+<!--                    <p>标签云</p>-->
+<!--                    --><?php //$this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list'); ?>
+<!--                    --><?php //$this->widget('Widget_Metas_Tag_Cloud')->parse('<a href="{permalink}" class="tag">{name}</a>'); ?>
+<!--                </canvas>-->
+<!--            </div>-->
         </div>
     </aside>
 

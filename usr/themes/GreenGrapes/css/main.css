@@ -464,3 +464,23 @@ footer {padding: 20px;margin: 20px 0 0;text-align:center;background-color:#fffff
 	.post-article .text .tags-list{width:50%}
 	#smilies-box{width: 280px;}
 }
+
+/*标签云*/
+#cate{
+	padding-left: 20px;
+}
+#cate li{
+	font-size:18px;
+	float:left;
+	list-style-type: none;
+	margin:5px 3px;
+}
+#cate li a{
+	padding:2px 5px ;
+	border-radius: 5px;
+	border:1px solid #ddd;
+}
+#cate li a:hover{
+	text-decoration: none;
+	background-color: #ddd;
+}
