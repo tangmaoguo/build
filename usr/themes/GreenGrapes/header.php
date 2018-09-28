@@ -66,7 +66,9 @@
             <li <?php if($this->is('index')): ?> class="active"<?php endif; ?>>
                 <a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
             </li>
-
+            <li>
+                <a  href="https://github.com/tangmaoguo"><?php _e('Github'); ?></a>
+            </li>
            <li>
                <a  href="<?php $this->options->feedUrl(); ?>"><?php _e('RSS'); ?></a>
            </li>
