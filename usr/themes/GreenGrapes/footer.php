@@ -27,6 +27,13 @@
 <script src = "<?php $this->options->themeUrl('js/headerCanvas.js'); ?>"></script>
 <script src = "<?php $this->options->themeUrl('js/home.js'); ?>"></script>
 <?php $this->footer(); ?>
-
+<script>
+    $(function(){
+        if(location.href.indexOf('www') == -1){
+           host =  window.location.host
+            location.href = "https://www."+host;
+        }
+    })
+</script>
 </body>
 </html>
