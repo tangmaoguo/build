@@ -4,7 +4,7 @@
 ## 具体步骤：
 - ## 一、安装typecho
 
-    - 从typecho官网下载包 http://typecho.org/download，解压。
+    - 从typecho官网下载包 http://typecho.org/download ，解压。
     - 在PHP环境下运行,安装完成。
 
 - ## 二、使用主题
