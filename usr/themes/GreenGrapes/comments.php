@@ -16,7 +16,28 @@
 <script src="<?php $this->options->themeUrl('js/changyan.labs.https.js?appid=cytEt3nmb'); ?>"></script>
 <!--<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>-->
 <!--<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytEt3nmb"></script>-->
+<script src="<?php $this->options->themeUrl('js/jquery2.14.min.js'); ?>"></script>
+<script type="text/javascript">
+    $(function(){
+        $('body').on('click','.issue-btn-w',function(){
+            var wrap_name_w = $(".wrap-name-w").val(); // 昵称
+            var textarea_fw = $(".textarea-fw").val(); //内容
+            if(wrap_name_w == "" || textarea_fw == "" ){
+               return false;
+            }
+            $.ajax({
+                url:'',
+                type:'post',
+                dataType:'json',
+                data:{},
+                success:function(){
 
+                }
+            })
+            
+        })
+    })
+</script>
 <div id="comments">
     <?php $config=Helper::options()->plugin('HelloChangYan'); ?>
     <?php if($config->isOpenComment==0): ?>
