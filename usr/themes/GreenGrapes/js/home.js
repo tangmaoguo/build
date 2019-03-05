@@ -78,14 +78,23 @@ var closeEnable = false;
 }
 
 $(document).ready(function () {
+	// 分页
+	$('.pagination a, .pagination span').addClass('page-link');
+
+    if(!document.getElementById("sidebar")) {
+    	return;
+    }
+
 	fssilde();
+
 	TagCanvas.Start('mycanvas', '', {
-		textColour : '#000',
-		outlineColour: '#16a085',
-		outlineThickness : 1,
-		maxSpeed : 0.03,
-		depth : 0.75,
-		wheelZoom : false
+		textColour: '#000',
+		//outlineColour: '#16a085',
+		outlineColour: $('.skin-bg').css('background-color'),
+		outlineThickness: 1,
+		maxSpeed: 0.03,
+		depth: 0.75,
+		wheelZoom: false
 	});
 
 	//边栏固定
@@ -106,4 +115,11 @@ $(document).ready(function () {
 			}
 		});
 	}
+	
+	// 切换主题
+	$('#switch_color .flex-fill').click(function(e) {
+	    var obj = $(this);
+	    $.cookie('greengrapes_color', obj.data('color'));
+	    location.reload();
+    });
 });

@@ -16,36 +16,26 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font-awesome.min.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('css/main.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/prism.css'); ?>">
-    <script src="<?php $this->options->themeUrl('js/prism.js'); ?>"></script>
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?f8e1b9b1a93c7ce7a3d2ede469025b94";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/skin-'. get_theme_color() .'.css'); ?>">
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php if(class_exists('Snow_Plugin') && isset($this->options->plugins['activated']['Snow'])): ?>
-        <style>
-            #logo:after{
-                content:url(<?php $this->options->themeUrl('img/hat.png'); ?>);
-                display:block;
-                position:absolute;
-                top:25px;
-                left:180px;/* 根据实际情况修改定位*/
-            }
-        </style>
+    <style>
+    #logo:after{
+/*        content:url(*/<?php //$this->options->themeUrl('img/hat.png'); ?>/*);*/
+        display:block;
+        position:absolute;
+        top:25px;
+        left:180px;/* 根据实际情况修改定位*/
+    }
+    </style>
     <?php endif; ?>
     <?php $this->header(); ?>
-
 </head>
 <body>
-<header id="l-header" class="l-header" style="background-image:url(<?php $this->options->bgImg(); ?>">
+<?php if(!($this->is('post') || $this->is('page')) || empty($this->options->ShowBlock) || !in_array('HeaderHiddenInDetail', $this->options->ShowBlock)): ?>
+<header id="l-header" class="l-header" style="background-image:url(<?php $this->options->bgImg(); ?>)">
     <div class="hdbg"></div>
-    <div class="hdbg2"></div>
+    <div class="hdbg2 skin-bg"></div>
     <div class="m-about">
         <div id="logo">
             <a href="<?php $this->options->siteUrl(); ?>"><img src="<?php $this->options->headerIcon(); ?>" alt=""></a>
@@ -55,6 +45,7 @@
     </div>
     <div id="header-canvas" style="width: 100%;height: 100%"></div>
 </header>
+<?php endif; ?>
 <div id="m-nav" class="m-nav">
     <div class="m-nav-all">
         <div class="m-logo-url">
@@ -66,13 +57,12 @@
             <li <?php if($this->is('index')): ?> class="active"<?php endif; ?>>
                 <a href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
             </li>
-            <li>
-                <a  href="https://github.com/tangmaoguo"><?php _e('Github'); ?></a>
-            </li>
-           <li>
-               <a  href="<?php $this->options->feedUrl(); ?>"><?php _e('RSS'); ?></a>
-           </li>
-
+<!--            <li>-->
+<!--                <a  href="https://github.com/tangmaoguo/build">--><?php //_e('Github源码'); ?><!--</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a  href="--><?php //$this->options->feedUrl(); ?><!--">--><?php //_e('RSS'); ?><!--</a>-->
+<!--            </li>-->
             <?php while($pages->next()): ?>
                 <li <?php if($this->is('page', $pages->slug)): ?> class="active"<?php endif; ?>>
                     <a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>"><?php $pages->title(); ?></a>
